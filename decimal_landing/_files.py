@@ -27,7 +27,9 @@ def strict_json(text):
 
     try:
         return json.loads(text, object_pairs_hook=unique_object, parse_constant=invalid_constant)
-    except (json.JSONDecodeError, RecursionError) as exc:
+    except InputError:
+        raise
+    except (ValueError, RecursionError) as exc:
         raise InputError("invalid JSON") from exc
 
 
