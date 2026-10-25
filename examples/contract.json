@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "columns": [
+    {"name": "amount", "precision": 6, "scale": 2, "rounding": "half_even",
+     "max_cell_abs_error": "0.005", "max_total_abs_error": "0.010", "max_changed": 2}
+  ]
+}

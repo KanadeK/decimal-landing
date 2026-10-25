@@ -1,0 +1,4 @@
+id,amount,note
+001,12.345,round down at an even tie
+002,12.355,round up at an odd tie
+003,100,exact with added scale
