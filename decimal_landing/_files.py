@@ -22,6 +22,26 @@ def unique_object(pairs):
 
 
 def strict_json(text):
+    # Bound nesting independently of the platform's C/Python recursion limits.
+    depth = 0
+    quoted = escaped = False
+    for char in text:
+        if quoted:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == '"':
+                quoted = False
+        elif char == '"':
+            quoted = True
+        elif char in "[{":
+            depth += 1
+            if depth > 128:
+                raise InputError("JSON nesting exceeds 128 levels")
+        elif char in "]}":
+            depth -= 1
+
     def invalid_constant(value):
         raise InputError("non-finite JSON constant")
 

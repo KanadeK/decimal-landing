@@ -81,7 +81,7 @@ trimming, currency symbols, grouping separators, NaN, Infinity or locale guessin
 Limits: 1024 characters per literal, 512 coefficient digits, explicit exponent
 within ±512; these apply even to zero. Contract size 64 KiB. CSV fields are limited
 to 1 MiB and headers to 1024 unique nonempty names. Unknown/duplicate JSON keys
-are rejected.
+are rejected. JSON nesting is limited to 128 levels.
 
 ## Reports and exit codes
 

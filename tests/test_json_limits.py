@@ -18,3 +18,9 @@ class JsonLimitTests(unittest.TestCase):
     def test_deep_nesting_is_controlled(self):
         with self.assertRaises(InputError):
             strict_json("[" * 2000 + "]" * 2000)
+
+    def test_nesting_counter_ignores_quoted_brackets_and_escapes(self):
+        value = "[" * 300 + '\\"}' + "]" * 300
+        import json
+
+        self.assertEqual(strict_json(json.dumps({"a": value})), {"a": value})
